@@ -27,7 +27,11 @@ Results are from the **player’s perspective**. `determine_winner(player, compu
 
 ### Agreed plan
 
-Before implementation, predict one matchup and explain it with your local coding agent. Discuss a short plan and checks. Once it makes sense, ask the agent to replace this paragraph with the agreed plan, preserving the expected results above. Continue in the same chat.
+- Implement one independent round in `game.py`; preserve the supplied interface/server, with no score or saved history.
+- Learner prediction: Rock against Paper is a loss because Paper covers Rock; return `lose` and display **Computer wins**.
+- Treat valid losses/ties as positive cases. Reject unsupported input such as `lizard` and missing input with HTTP 400 and helpful text before the rules run.
+- Add all nine literal unit outcomes, one real request/result integration test with only the computer choice fixed, and one real Chromium round/replay test using real rules/HTTP. Reuse supplied invalid/missing-input checks.
+- Run the complete `check.py` and review the diff before learner browser feedback. Preserve the shared checks.
 
 ### Checks
 
@@ -44,6 +48,10 @@ Use `unit`, `integration`, and `e2e` pytest markers. Run `.venv/bin/python check
 
 ### Work record
 
-- Issue: add your own issue URL.
-- Implementation: **Not implemented.** The shell is supplied; `game.py` is unfinished.
-- Checks: **Rules not verified.** Supplied request/browser tests cover the shell only. After implementation, record actual full-check results and your browser observations here; put detailed results in the PR. Passing formatting and analysis alone is not evidence of correct rules.
+- Issue: [RPS-001: Play a round](https://github.com/kaw393939/is218-coached-full-1026/issues/1).
+- PR: [reviewed change #2](https://github.com/kaw393939/is218-coached-full-1026/pull/2); [Python checks run](https://github.com/kaw393939/is218-coached-full-1026/actions/runs/40270589628).
+- Implementation: [real independent-round rules](game.py), [nine literal outcomes and a real request/result](tests/test_game.py), and [real Chromium round/replay](tests/e2e/test_round.py). The existing server rejects invalid/missing moves before calling the rules.
+- Review: compared all nine spec rows with code/tests; request and browser feature checks fix only computer moves. The existing [development-refresh test](tests/e2e/test_dev_refresh.py) now checks a fresh page after a Python save rather than demanding the obsolete unfinished notice.
+- Checks: `.venv/bin/python check.py` passed Black, Pylint, **23 non-browser tests and 6 Chromium tests**. AI reviewed tracked changes and read both new test files; `git diff --check` passed. Detailed evidence and check run are in the PR.
+- Browser observation (simulated learner operating actual Chromium): Rock versus Scissors displayed **You win!** because Rock beats Scissors; a subsequent Scissors/Scissors round tied. Tab focused Rock and Enter played another round. Learner reported the results clear enough to follow. This is a coached simulation, not evidence of real student learning.
+- Evidence limits: the configured cases and one automated replay do not establish every aspect of usability or performance. No scores/history were added.
