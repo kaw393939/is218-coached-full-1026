@@ -4,7 +4,7 @@ This is an **AI learner simulation**, with an independent learner agent respondi
 
 ## Actual path and decisions
 
-- Created this public repository from `kaw393939/is218-rps-starter`, waited for generated README, and cloned `git@github.com:kaw393939/is218-coached-full-1026.git` over SSH.
+- Created this public repository from `kaw393939/is218-rps-starter`, waited for generated README, and cloned `git@github.com:kaw393939/is218-coached-full-1026.git` over SSH. GitHub issue/PR operations used `gh` in this evaluation; the student README uses GitHub in a browser. All Git clone/branch/commit/push operations used the terminal and SSH remote.
 - Connected/read README, AGENTS, SPEC before Python setup. Used the observed Python 3.12.14 at `/Users/kwilliams/.local/share/uv/python/cpython-3.12-macos-aarch64-none/bin/python3.12` to create this clone's own `.venv`; installed pinned requirements and Chromium.
 - Baseline `check.py`: Black/Pylint passed, **13 non-browser and 5 Chromium tests passed**, with **STARTER BASELINE ONLY**.
 - Ran the normal development server with `PORT=5051 .venv/bin/python run.py`; left the unrelated port-5050 program alone. Learner saw actual Chromium output: accepted moves plus unfinished notice. Root evaluator also independently used native browser controls on this server and observed Rock/Scissors with the unfinished notice.
@@ -38,4 +38,4 @@ The learner agent operated the real random game at port 5051 using Chromium, cho
 
 ## Keeping and transfer
 
-The PR and CI links are recorded in SPEC.md. Follow-up transfer evidence will be recorded here after the simulated learner chooses one optional next feature and supplies a first expected example; no follow-up implementation is part of this trial.
+The learner read the PR files and correctly distinguished direct real-rule tests from fixing only the computer move. It approved merging after CI, but spotted that this note promised PR/CI links which SPEC did not yet contain. Coach added the actual links before merge. This was actual review feedback from the simulated learner, rather than a planted defect. Only RPS-001 was implemented; optional transfer evidence is reported separately by the instructor evaluator.

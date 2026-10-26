@@ -49,6 +49,7 @@ Use `unit`, `integration`, and `e2e` pytest markers. Run `.venv/bin/python check
 ### Work record
 
 - Issue: [RPS-001: Play a round](https://github.com/kaw393939/is218-coached-full-1026/issues/1).
+- PR: [reviewed change #2](https://github.com/kaw393939/is218-coached-full-1026/pull/2); [Python checks run](https://github.com/kaw393939/is218-coached-full-1026/actions/runs/40270589628).
 - Implementation: [real independent-round rules](game.py), [nine literal outcomes and a real request/result](tests/test_game.py), and [real Chromium round/replay](tests/e2e/test_round.py). The existing server rejects invalid/missing moves before calling the rules.
 - Review: compared all nine spec rows with code/tests; request and browser feature checks fix only computer moves. The existing [development-refresh test](tests/e2e/test_dev_refresh.py) now checks a fresh page after a Python save rather than demanding the obsolete unfinished notice.
 - Checks: `.venv/bin/python check.py` passed Black, Pylint, **23 non-browser tests and 6 Chromium tests**. AI reviewed tracked changes and read both new test files; `git diff --check` passed. Detailed evidence and check run are in the PR.
